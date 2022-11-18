@@ -1,4 +1,3 @@
-import { ThisReceiver } from '@angular/compiler';
 import { Component, OnInit } from '@angular/core';
 
 const ROWS_HEIGHT: { [id: number]: number } = {
