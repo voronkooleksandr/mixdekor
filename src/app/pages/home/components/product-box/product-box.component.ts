@@ -1,16 +1,28 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { Product } from 'src/app/models/product.model';
 
 @Component({
   selector: 'app-product-box',
   templateUrl: './product-box.component.html',
-  styleUrls: ['./product-box.component.scss']
+  styleUrls: ['./product-box.component.scss'],
 })
 export class ProductBoxComponent implements OnInit {
-
   @Input() fullWidthMode = false;
-  constructor() { }
+  product: Product | undefined = {
+    id: 1,
+    title: 'Карта України з дерева',
+    price: 1000,
+    category: '3Д карти України',
+    description: 'Зроблена з натурального дерева береза',
+    image: 'https://via.placeholder.com/150'
+  };
+  @Output() addToCart = new EventEmitter();
 
-  ngOnInit(): void {
+  constructor() {}
+
+  ngOnInit(): void {}
+
+  onAddToCart(): void {
+    this.addToCart.emit(this.product);
   }
-
 }
