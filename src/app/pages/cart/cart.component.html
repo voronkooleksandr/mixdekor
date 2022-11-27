@@ -29,12 +29,16 @@
   <ng-container matColumnDef="quantity">
     <th mat-header-cell *matHeaderCellDef>Кількість</th>
     <td mat-cell *matCellDef="let element">
-      <button mat-icon-button>
-        <mat-icon>remove</mat-icon>
+      <button 
+      (click)="onRemoveQuantity(element)"
+      mat-icon-button>
+        <mat-icon>Зменшити</mat-icon>
       </button>
       <span>{{element.quantity}}</span>
-      <button mat-icon-button>
-        <mat-icon>add</mat-icon>
+      <button 
+      (click)="onAddQuantity(element)"
+      mat-icon-button>
+        <mat-icon>Збільшити</mat-icon>
       </button>
     </td>
     <td mat-footer-cell *matFooterCellDef>
@@ -53,11 +57,14 @@
   </ng-container>
   <ng-container matColumnDef="action">
     <th mat-header-cell *matHeaderCellDef>
-      <button mat-raised-button color="warn" class="float-right">Очистити все</button>
+      <button mat-raised-button color="warn" class="float-right" (click)="onClearCart()">
+        Очистити все
+      </button>
     </th>
     <td mat-cell *matCellDef="let element">
-      <button mat-mini-fab color="warn" >
-        <mat-icon>close</mat-icon>
+      <button mat-mini-fab color="warn"
+      (click)="onRemoveFromCart(element)" >
+        <mat-icon>Закрити</mat-icon>
       </button>
     </td>
     <td mat-footer-cell *matFooterCellDef>
